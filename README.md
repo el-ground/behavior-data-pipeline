@@ -1,4 +1,8 @@
 # behavior-data-pipeline
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c77a7916-6610-4ec9-a35d-e398deedba56/deploy-status)](https://app.netlify.com/sites/behavior-data-pipeline/deploys)
+
+https://behavior-data-pipeline.netlify.app/
+
 A deployable demo e-commerce web service implementing Google Analytics 4 with a DOM simulator to generate user behavior data, along with an internal service that can stream &amp; transform data from Google BigQuery to target destination, which allows running supervised ML tasks based on the user simulation parameters and its generated behavior data collected via GA4.
 
 This project is a part of the [KAIST Lean Startup Camp](https://kcbstartup.kaist.ac.kr/sub0307) program, whose purpose is to create synergy between the startups in KAIST College of Business and the engineers in KAIST College of Engineering.
