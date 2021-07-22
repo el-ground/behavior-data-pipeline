@@ -5870,6 +5870,14 @@ gatsby-page-utils@^1.10.0:
     lodash "^4.17.21"
     micromatch "^4.0.2"
 
+gatsby-plugin-google-tagmanager@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-3.10.0.tgz#2f0938d0ded5e979cc94b12a494e9134baf57c1c"
+  integrity sha512-/baf4jOQb7xOdsw72vUUKxLIAhjlkf8H6tBHpxOTCZ3Zfw79C1ItjTKxabT9RZBc8VokGmBVu4gdLpQ9gW80kQ==
+  dependencies:
+    "@babel/runtime" "^7.14.6"
+    web-vitals "^1.1.2"
+
 gatsby-plugin-image@^1.10.1:
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-1.10.1.tgz#27a5eb2031f16d5b7320c2399266decdf295618a"
@@ -13012,6 +13020,11 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
+
+web-vitals@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-1.1.2.tgz#06535308168986096239aa84716e68b4c6ae6d1c"
+  integrity sha512-PFMKIY+bRSXlMxVAQ+m2aw9c/ioUYfDgrYot0YUa+/xa0sakubWhSDyxAKwzymvXVdF4CZI71g06W+mqhzu6ig==
 
 webpack-assets-manifest@^5.0.5:
   version "5.0.6"

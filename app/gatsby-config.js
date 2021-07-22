@@ -25,5 +25,12 @@ module.exports = {
       },
       __key: "images",
     },
+
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-K9KBLVV",
+      }
+    }
   ],
 };
