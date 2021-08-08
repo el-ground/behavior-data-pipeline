@@ -6,9 +6,9 @@ import CartItemList from './CartItemList'
 
 const Cart = () => {
   const { isEmpty, cartTotal } = useCart()
-  const formattedSubTotal = new Intl.NumberFormat('de-DE', {
+  const formattedSubTotal = new Intl.NumberFormat('kr-KO', {
     style: 'currency',
-    currency: 'EUR',
+    currency: 'KRW',
   }).format(cartTotal / 100)
 
   if (isEmpty) return <p>Your cart is empty</p>

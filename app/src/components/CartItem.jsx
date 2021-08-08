@@ -2,7 +2,7 @@ import React from 'react'
 import { useCart } from 'react-use-cart'
 import Img from 'gatsby-image'
 
-const CartItem = ({ id, name, quantity, price, image }) => {
+const CartItem = ({ id, name, quantity, price, imgUrl }) => {
   const { updateItemQuantity, removeItem } = useCart()
 
   const increment = () => updateItemQuantity(id, quantity + 1)
@@ -10,6 +10,8 @@ const CartItem = ({ id, name, quantity, price, image }) => {
   const remove = () => removeItem(id)
 
   const total = quantity * price
+
+  const formattedPrice = `${price} KRW`
 
   const formattedUnitPrice = new Intl.NumberFormat('kr-KO', {
     style: 'currency',
@@ -25,7 +27,7 @@ const CartItem = ({ id, name, quantity, price, image }) => {
     <div key={id} className="md:bg-gainsboro md:rounded-lg flex items-center py-3 md:py-6 md:px-3 md:px-6 md:mb-3">
       <div className="w-3/5 flex flex-grow items-center">
         <div className="h-16 md:h-20 w-16 md:w-20 mr-4 bg-gainsboro p-1 rounded-lg">
-          <Img fluid={image.childImageSharp.fluid} alt={name} title={name} />
+          <Img fluid={imgUrl} alt={name} title={name} />
         </div>
 
         <div>

@@ -32,7 +32,7 @@ function Header({ pathname }) {
               <li key={category.id} className="block my-4 md:inline-block md:my-0">
                 <Link
                   className="text-lightgray hover:text-slategray hover:bg-gainsboro rounded-full py-2 px-3 font-medium"
-                  to={`/categories/${category.slug}`}
+                  to={`/categories/${category.id}`}
                 >
                   {category.name}
                 </Link>
@@ -42,7 +42,7 @@ function Header({ pathname }) {
 
           <div className="flex items-center">
             <div className="ml-8">
-              <Link to="/search" className="text-slategray">
+              <Link to="/404" className="text-slategray">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" className="fill-current w-4">
                   <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
                 </svg>
