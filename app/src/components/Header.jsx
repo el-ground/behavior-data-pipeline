@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { useCart } from 'react-use-cart'
-import data from '../res/data'
 
-function Header({ pathname }) {
-  const categories = data.categories
+import { categories } from '../res/data'
+
+function Header({ location }) {
   const { isEmpty } = useCart()
 
   return (
-    <header className="px-6 container mx-auto bg-white w-full block flex-grow flex items-center w-auto justify-between">
+    <header className="px-6 container mx-auto bg-white w-full max-w-screen-xl flex-grow flex items-center justify-between">
       <div className="pt-6 w-full">
         <nav className="flex items-center justify-between flex-wrap">
           <svg className="fill-current text-primary w-5" viewBox="0 0 26 44" xmlns="http://www.w3.org/2000/svg">
@@ -25,14 +25,14 @@ function Header({ pathname }) {
                 to="/"
                 className="text-lightgray hover:text-slategray hover:bg-gainsboro rounded-full py-2 px-3 font-medium"
               >
-                Catalog
+                All
               </Link>
             </li>
             {categories.map((category) => (
               <li key={category.id} className="block my-4 md:inline-block md:my-0">
                 <Link
                   className="text-lightgray hover:text-slategray hover:bg-gainsboro rounded-full py-2 px-3 font-medium"
-                  to={`/categories/${category.id}`}
+                  to={`/categories?id=${category.id}`}
                 >
                   {category.name}
                 </Link>
@@ -42,7 +42,7 @@ function Header({ pathname }) {
 
           <div className="flex items-center">
             <div className="ml-8">
-              <Link to="/404" className="text-slategray">
+              <Link to="/search" className="text-slategray">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" className="fill-current w-4">
                   <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
                 </svg>

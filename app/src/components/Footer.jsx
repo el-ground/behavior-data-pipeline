@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className="container mx-auto px-6">
+    <div className="container max-w-screen-xl mx-auto px-6">
       <div className="flex flex-col md:flex-row items-center md:justify-between border-t-2 border-gainsboro py-6">
         <p className="text-lightgray mb-3 md:mb-0">
           © 2021, Built with

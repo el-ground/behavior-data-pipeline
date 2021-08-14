@@ -1,22 +1,15 @@
 import React from 'react'
 
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+
 import '../styles/main.css'
 
-import Banner from './Banner'
-import Header from './Header'
-import Footer from './Footer'
-// import SEO from './SEO';
-
-const Layout = ({ children, location }) => {
+const Layout = ({ location, children }) => {
   return (
     <>
-      {/* <SEO /> */}
-      <Banner />
-
       <Header {...location} />
-
-      <div className="container mx-auto p-6 md:py-12 lg:py-16">{children}</div>
-
+      <div className="container max-w-screen-xl mx-auto p-6 md:py-12 lg:py-16">{children}</div>
       <Footer />
     </>
   )

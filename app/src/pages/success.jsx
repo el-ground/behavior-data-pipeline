@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 import { navigate } from 'gatsby'
 
-// import SEO from '../components/SEO'
-
-function SuccessPage({ location }) {
+const SuccessPage = ({ location }) => {
   const showSuccessScreen = location.state && location.state.orderId
 
   useEffect(() => {
@@ -18,19 +16,18 @@ function SuccessPage({ location }) {
 
   if (!showSuccessScreen)
     return (
-      <>
+      <div class="container h-screen flex flex-col justify-center justify-items-center content-center items-center m-auto ">
         <div className="mb-6">
           <h1 className="font-bold text-3xl md:text-6xl mb-3 text-primary">Oops!</h1>
 
           <hr className="border-b border-gainsboro w-10" />
         </div>
         <p>You've no business being on this page!</p>
-      </>
+      </div>
     )
 
   return (
     <>
-      {/* <SEO pageTitle="Thank you for your order" /> */}
       <div className="mb-6">
         <h1 className="font-bold text-3xl md:text-6xl mb-3 text-primary">Thank you!</h1>
 
