@@ -9,7 +9,7 @@ const Layout = ({ location, children }) => {
   return (
     <>
       <Header {...location} />
-      <div className="container max-w-screen-xl mx-auto p-6 md:py-12 lg:py-16">{children}</div>
+      <div className="container w-full max-w-screen-xl mx-auto p-6 md:py-12 lg:py-16">{children}</div>
       <Footer />
     </>
   )
