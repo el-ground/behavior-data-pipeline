@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useCart } from 'react-use-cart'
 import { RadioGroup } from '@headlessui/react'
 import classNames from 'classnames'
-// import { navigate } from '@reach/router'
 // import ReviewsList from '../components/ReviewsList'
 import { products } from '../res/data'
 import { getFormattedPrice } from '../utils/getFormattedPrice'
@@ -11,10 +10,22 @@ import { Drawer, DrawerHeader, DrawerBody, DrawerFooter } from '../components/Dr
 const ProductPage = ({ location }) => {
   const params = location.search ? new URLSearchParams(location.search) : null
   const variantId = params && params.get('id')
+  const colorHash = location.hash.slice(1) ?? null
 
   if (!products || !variantId) return null
 
   const { addItem } = useCart()
+
+  // const onAddClick = () => {  // }
+  // useEffect(() => {
+  //   console.log(items, 'items')
+  //   console.log(typeof items, 'type')
+
+  //   localStorage.setItem('cart', items.toString())
+  // }, [items])
+  // useEffect(() => {
+  //   console.log(JSON.parse(localStorage.getItem('cart')), 'cart')
+  // }, [])
 
   const product = products.find((product) => {
     return product.id === variantId
@@ -26,6 +37,14 @@ const ProductPage = ({ location }) => {
   const [variantQuantity, setVariantQuantity] = useState(1)
   const [selectedColor, setSelectedColor] = useState(product.colors[0])
 
+  useEffect(() => {
+    if (colorHash) setSelectedColor(colorHash)
+  }, [])
+
+  useEffect(() => {
+    history.replaceState(null, null, `#${selectedColor}`)
+  }, [selectedColor])
+
   const sizeIndex = product.sizes.findIndex((size) => size.inStock)
   const [selectedSize, setSelectedSize] = useState(product.sizes[sizeIndex])
 
@@ -34,13 +53,6 @@ const ProductPage = ({ location }) => {
 
   const [isSizeDrawerOpen, setIsSizeDrawerOpen] = useState(false)
   const toggleSizeDrawer = () => setIsSizeDrawerOpen(!isSizeDrawerOpen)
-
-  // const activeVariant = variants.find((variant) => variant.id === activeVariantId)
-  // useEffect(() => {
-  //   navigate(`?variantId=${activeVariantId}`, { replace: true })
-  // }, [activeVariantId])
-
-  // id, name, brand, category, type, sizes, price, quantity, colors, imgUrl, link
 
   return (
     <>
@@ -247,7 +259,7 @@ const ProductPage = ({ location }) => {
               onClick={() =>
                 addItem(
                   {
-                    id: product.id,
+                    id: `${product.id}#${selectedColor}`,
                     price: product.price,
                     image: product.imgUrl,
                     name: product.name,

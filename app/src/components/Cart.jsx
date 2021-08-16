@@ -1,38 +1,48 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 import { useCart } from 'react-use-cart'
+import { getFormattedPrice } from '../utils/getFormattedPrice'
 
 import CartItemList from './CartItemList'
 
 const Cart = () => {
   const { isEmpty, cartTotal } = useCart()
-  const formattedSubTotal = new Intl.NumberFormat('kr-KO', {
-    style: 'currency',
-    currency: 'KRW',
-  }).format(cartTotal / 100)
+  const formattedSubTotal = getFormattedPrice(cartTotal)
 
   if (isEmpty) return <p>Your cart is empty</p>
 
   return (
-    <React.Fragment>
+    <>
       <CartItemList />
 
-      <div className="mt-3 md:mt-6 py-3 md:py-6 border-t-2 border-gainsboro">
-        <div className="flex flex-col items-end">
-          <div className="flex flex-col items-end mb-3">
-            <span className="text-slategray">Sub total</span>
-            <span className="text-xl font-bold text-primary">{formattedSubTotal}</span>
-          </div>
-
+      <div className="mt-4 md:mt-6 py-5 md:py-6 border-t-2 border-gainsboro">
+        <div className="flex justify-between text-base font-medium text-slategray">
+          <p>Subtotal</p>
+          <p className="text-lg font-semibold  ">{formattedSubTotal}</p>
+        </div>
+        <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+        <div className="mt-6 md:mt-14">
           <Link
             to="/checkout"
-            className="bg-primary hover:bg-slategray px-4 py-3 rounded-lg text-white text-sm font-bold tracking-widest uppercase focus:outline-none"
+            className="bg-primary hover:bg-slategray text-white md:w-72 mx-auto md:mt-8  flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium"
           >
             Checkout
           </Link>
         </div>
+        <div className="mt-6 flex justify-center text-sm text-center text-gray-500">
+          <p>
+            or{' '}
+            <button
+              type="button"
+              className="text-indigo-600 font-medium hover:text-indigo-500"
+              onClick={() => navigate(-1)}
+            >
+              Continue Shopping
+            </button>
+          </p>
+        </div>
       </div>
-    </React.Fragment>
+    </>
   )
 }
 

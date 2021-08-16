@@ -49,7 +49,7 @@ module.exports = {
       price: 30000,
       rating: 4.2,
       reviewCount: 102,
-      colors: ['Turquoise', 'Black', 'White'],
+      colors: ['turquoise', 'black', 'white'],
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       imgUrl:
@@ -75,7 +75,7 @@ module.exports = {
       price: 25000,
       rating: 4.6,
       reviewCount: 29,
-      colors: ['Black', 'Brown'],
+      colors: ['black', 'brown'],
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       imgUrl:
@@ -101,7 +101,7 @@ module.exports = {
       price: 35000,
       rating: 2.0,
       reviewCount: 5,
-      colors: ['Purple', 'Pink', 'White'],
+      colors: ['purple', 'pink', 'white'],
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       imgUrl:
@@ -127,7 +127,7 @@ module.exports = {
       price: 89000,
       rating: 3.0,
       reviewCount: 4,
-      colors: ['Purple', 'Pink', 'White'],
+      colors: ['purple', 'pink', 'white'],
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       imgUrl:
@@ -153,7 +153,7 @@ module.exports = {
       price: 9000,
       rating: 2.5,
       reviewCount: 20,
-      colors: ['Gray'],
+      colors: ['gray'],
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       imgUrl:
@@ -179,7 +179,7 @@ module.exports = {
       price: 10000,
       rating: 3.9,
       reviewCount: 117,
-      colors: ['White'],
+      colors: ['white'],
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       imgUrl:
