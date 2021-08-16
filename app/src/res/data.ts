@@ -1,5 +1,5 @@
 export type CategoryIds = 'hoodies' | 'tshirts'
-export type Sizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL'
+export type SizeName = 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL'
 
 type Item = {
   id: string
@@ -7,9 +7,10 @@ type Item = {
   brand: string
   category: CategoryIds
   type: 'men' | 'women' | 'kids' | 'babies'
-  sizes: Sizes[]
+  sizes: { name: SizeName; inStock: boolean }[]
   price: number
-  quantity: number
+  rating: number
+  reviewCount: number
   colors: string[]
   description: string
   imgUrl: string
@@ -35,9 +36,19 @@ module.exports = {
       brand: 'H&M',
       category: 'hoodies',
       type: 'men',
-      sizes: ['S', 'M', 'L', 'XL'],
+      sizes: [
+        { name: 'XXS', inStock: true },
+        { name: 'XS', inStock: true },
+        { name: 'S', inStock: false },
+        { name: 'M', inStock: true },
+        { name: 'L', inStock: true },
+        { name: 'XL', inStock: true },
+        { name: 'XXL', inStock: true },
+        { name: 'XXXL', inStock: false },
+      ],
       price: 30000,
-      quantity: 10,
+      rating: 4.2,
+      reviewCount: 102,
       colors: ['Turquoise', 'Black', 'White'],
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -51,9 +62,19 @@ module.exports = {
       brand: 'H&M',
       category: 'hoodies',
       type: 'men',
-      sizes: ['S', 'M', 'L', 'XL'],
+      sizes: [
+        { name: 'XXS', inStock: false },
+        { name: 'XS', inStock: true },
+        { name: 'S', inStock: true },
+        { name: 'M', inStock: true },
+        { name: 'L', inStock: true },
+        { name: 'XL', inStock: true },
+        { name: 'XXL', inStock: true },
+        { name: 'XXXL', inStock: false },
+      ],
       price: 25000,
-      quantity: 10,
+      rating: 4.6,
+      reviewCount: 29,
       colors: ['Black', 'Brown'],
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -67,9 +88,19 @@ module.exports = {
       brand: 'H&M',
       category: 'hoodies',
       type: 'men',
-      sizes: ['S', 'M', 'L', 'XL'],
+      sizes: [
+        { name: 'XXS', inStock: true },
+        { name: 'XS', inStock: true },
+        { name: 'S', inStock: true },
+        { name: 'M', inStock: true },
+        { name: 'L', inStock: true },
+        { name: 'XL', inStock: true },
+        { name: 'XXL', inStock: true },
+        { name: 'XXXL', inStock: false },
+      ],
       price: 35000,
-      quantity: 10,
+      rating: 2.0,
+      reviewCount: 5,
       colors: ['Purple', 'Pink', 'White'],
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -83,9 +114,19 @@ module.exports = {
       brand: 'Zara',
       category: 'hoodies',
       type: 'men',
-      sizes: ['S', 'M', 'L', 'XL'],
+      sizes: [
+        { name: 'XXS', inStock: true },
+        { name: 'XS', inStock: true },
+        { name: 'S', inStock: true },
+        { name: 'M', inStock: true },
+        { name: 'L', inStock: true },
+        { name: 'XL', inStock: true },
+        { name: 'XXL', inStock: true },
+        { name: 'XXXL', inStock: false },
+      ],
       price: 89000,
-      quantity: 10,
+      rating: 3.0,
+      reviewCount: 4,
       colors: ['Purple', 'Pink', 'White'],
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -99,9 +140,19 @@ module.exports = {
       brand: 'H&M',
       category: 'tshirts',
       type: 'men',
-      sizes: ['S', 'M', 'L', 'XL'],
+      sizes: [
+        { name: 'XXS', inStock: true },
+        { name: 'XS', inStock: true },
+        { name: 'S', inStock: true },
+        { name: 'M', inStock: true },
+        { name: 'L', inStock: true },
+        { name: 'XL', inStock: true },
+        { name: 'XXL', inStock: true },
+        { name: 'XXXL', inStock: false },
+      ],
       price: 9000,
-      quantity: 10,
+      rating: 2.5,
+      reviewCount: 20,
       colors: ['Gray'],
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -115,9 +166,19 @@ module.exports = {
       brand: 'H&M',
       category: 'tshirts',
       type: 'men',
-      sizes: ['S', 'M', 'L', 'XL'],
+      sizes: [
+        { name: 'XXS', inStock: true },
+        { name: 'XS', inStock: true },
+        { name: 'S', inStock: true },
+        { name: 'M', inStock: true },
+        { name: 'L', inStock: true },
+        { name: 'XL', inStock: true },
+        { name: 'XXL', inStock: true },
+        { name: 'XXXL', inStock: false },
+      ],
       price: 10000,
-      quantity: 10,
+      rating: 3.9,
+      reviewCount: 117,
       colors: ['White'],
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -131,9 +192,17 @@ module.exports = {
       brand: 'H&M',
       category: 'tshirts',
       type: 'men',
-      sizes: ['S', 'M', 'L', 'XL'],
+      sizes: [
+        { name: 'XS', inStock: true },
+        { name: 'S', inStock: true },
+        { name: 'M', inStock: true },
+        { name: 'L', inStock: false },
+        { name: 'XL', inStock: true },
+        { name: 'XXL', inStock: true },
+      ],
       price: 12000,
-      quantity: 10,
+      rating: 3.6,
+      reviewCount: 7,
       colors: ['green', 'beige'],
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',

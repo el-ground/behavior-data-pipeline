@@ -21,7 +21,7 @@ const Product = ({ id, name, brand, category, type, sizes, price, quantity, colo
               {colors.map((color) => (
                 <div
                   key={`${id}${color}`}
-                  className="w-3 h-3 rounded-full inline-block mr-1"
+                  className="w-3 h-3 rounded-full inline-block mr-1 border border-black border-opacity-10 "
                   style={{ backgroundColor: color }}
                 />
               ))}
