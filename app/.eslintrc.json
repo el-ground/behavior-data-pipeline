@@ -1,3 +1,70 @@
 {
-  "extends": "gatsby-standard"
+  "extends": ["airbnb", "prettier", "gatsby-standard", "prettier/react"],
+  "plugins": ["prettier"],
+  "settings": {
+    "import/resolver": {
+      "alias": [
+        ["components", "./src/components"],
+        ["context", "./src/context"],
+        ["res", "./src/res"],
+        ["pages", "./src/pages"],
+        ["services", "./src/services"],
+        ["theme", "./src/theme"],
+        ["utils", "./src/utils"]
+      ]
+    }
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "semi": false,
+        "singleQuote": true,
+        "printWidth": 120
+      }
+    ],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-curly-brace-presence": "off",
+    "object-curly-spacing": ["warn", "always"],
+    "react/destructuring-assignment": "off",
+    "react/jsx-boolean-value": "off",
+    "react/jsx-curly-newline": "off",
+    "react/jsx-key": "error",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-wrap-multilines": "off",
+    "react/no-unescaped-entities": "off",
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "no-redeclare": "off",
+    "no-use-before-define": "off",
+    "consistent-return": "off",
+    "import/prefer-default-export": "off",
+    "max-len": [
+      "warn",
+      {
+        "code": 120,
+        "ignoreComments": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "no-shadow": "off",
+    "no-unused-vars": [
+      "warn",
+      {
+        "args": "none",
+        "vars": "all"
+      }
+    ]
+    // "react-hooks/rules-of-hooks": "error",
+    // "react-hooks/exhaustive-deps": "warn",
+  }
 }

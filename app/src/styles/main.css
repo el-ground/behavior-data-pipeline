@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#___gatsby {
+  @apply h-full;
+}
+
+html {
+  @apply bg-white font-sans antialiased leading-normal;
+}
+
+.site-nav {
+  @apply hidden;
+}
+
+.site-nav.open {
+  @apply block;
+}
+
+@media sm {
+  .site-nav {
+    @apply block;
+  }
+
+  .site-nav.open {
+    @apply block;
+  }
+}
+
+.product-rating input[type='radio']:checked + label {
+  @apply bg-primary text-white border-primary;
+}
+
+.product-rating input[type='radio']:active + label {
+  @apply border-slategray;
+}
+
+.ais-SearchBox-form {
+  @apply bg-gainsboro rounded flex;
+}
+
+.ais-SearchBox-input {
+  @apply bg-transparent appearance-none px-4 py-2 w-full outline-none;
+}
+
+.ais-SearchBox-submit,
+.ais-SearchBox-reset {
+  @apply px-2;
+}
+
+.ais-RefinementList-label,
+.ais-ToggleRefinement-label {
+  @apply py-2 flex items-center cursor-pointer;
+}
+
+.ais-RefinementList-item,
+.ais-ToggleRefinement-label {
+  @apply text-slategray;
+}
+
+.ais-RefinementList-item.ais-RefinementList-item--selected {
+  @apply text-primary;
+}
+
+.ais-RefinementList-checkbox,
+.ais-ToggleRefinement-checkbox {
+  @apply mr-3;
+}
+
+.ais-RefinementList-count {
+  @apply bg-gainsboro rounded-full p-1 w-5 h-5 flex items-center justify-center ml-auto text-lightgray text-xs;
+}
+
+.ais-Hits .ais-Hits-list {
+  @apply flex flex-wrap -mx-6;
+}
+
+.ais-Hits .ais-Hits-item {
+  @apply p-3 h-full w-full flex;
+}
+
+@screen md {
+  .ais-Hits .ais-Hits-item {
+    @apply p-6;
+  }
+}
+
+@screen lg {
+  .ais-Hits .ais-Hits-item {
+    @apply w-1/2;
+  }
+}
