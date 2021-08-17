@@ -6,20 +6,29 @@ import classNames from 'classnames'
 import { products } from '../res/data'
 import { getFormattedPrice } from '../utils/getFormattedPrice'
 import { Drawer, DrawerHeader, DrawerBody, DrawerFooter } from '../components/Drawer'
+import { navigate } from 'gatsby'
 
 const ProductPage = ({ location }) => {
   const params = location.search ? new URLSearchParams(location.search) : null
   const variantId = params && params.get('id')
-  const colorHash = location.hash.slice(1) ?? null
-
   if (!products || !variantId) return null
 
-  const { addItem } = useCart()
+  const product = products.find((product) => {
+    return product.id === variantId
+  })
+  if (!product) return null
 
-  // const onAddClick = () => {  // }
-  // useEffect(() => {
-  //   console.log(items, 'items')
-  //   console.log(typeof items, 'type')
+  const initialColor = (params && params.get('color')) ?? product.colors[0]
+
+  const initialSize = () => {
+    const variantSize = params && params.get('size')
+    const sizeIndex = variantSize
+      ? product.sizes.findIndex((size) => size.name === variantSize)
+      : product.sizes.findIndex((size) => size.inStock)
+    return product.sizes[sizeIndex]
+  }
+
+  const { addItem } = useCart()
 
   //   localStorage.setItem('cart', items.toString())
   // }, [items])
@@ -27,32 +36,20 @@ const ProductPage = ({ location }) => {
   //   console.log(JSON.parse(localStorage.getItem('cart')), 'cart')
   // }, [])
 
-  const product = products.find((product) => {
-    return product.id === variantId
-  })
-
-  if (!product) return null
-
   const formattedPrice = getFormattedPrice(product.price)
   const [variantQuantity, setVariantQuantity] = useState(1)
-  const [selectedColor, setSelectedColor] = useState(product.colors[0])
-
-  useEffect(() => {
-    if (colorHash) setSelectedColor(colorHash)
-  }, [])
-
-  useEffect(() => {
-    history.replaceState(null, null, `#${selectedColor}`)
-  }, [selectedColor])
-
-  const sizeIndex = product.sizes.findIndex((size) => size.inStock)
-  const [selectedSize, setSelectedSize] = useState(product.sizes[sizeIndex])
+  const [selectedColor, setSelectedColor] = useState(initialColor)
+  const [selectedSize, setSelectedSize] = useState(initialSize)
 
   const [isReviewDrawerOpen, setIsReviewDrawerOpen] = useState(false)
   const toggleReviewDrawer = () => setIsReviewDrawerOpen(!isReviewDrawerOpen)
 
   const [isSizeDrawerOpen, setIsSizeDrawerOpen] = useState(false)
   const toggleSizeDrawer = () => setIsSizeDrawerOpen(!isSizeDrawerOpen)
+
+  useEffect(() => {
+    navigate(`/products?id=${variantId}&color=${selectedColor}&size=${selectedSize.name}`)
+  }, [selectedColor, selectedSize])
 
   return (
     <>
@@ -199,7 +196,6 @@ const ProductPage = ({ location }) => {
                 Size guide
               </a>
             </div>
-
             <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
               <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
               <div className="grid grid-cols-4 gap-4">
@@ -259,7 +255,8 @@ const ProductPage = ({ location }) => {
               onClick={() =>
                 addItem(
                   {
-                    id: `${product.id}#${selectedColor}`,
+                    // need to have unique id per variant
+                    id: `${product.id}&color=${selectedColor}&size=${selectedSize.name}`,
                     price: product.price,
                     image: product.imgUrl,
                     name: product.name,
