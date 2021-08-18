@@ -5,18 +5,17 @@ import { useCart } from 'react-use-cart'
 import { products } from '../res/data'
 
 const IndexPage = () => {
-  // const { setItems } = useCart()
+  const { setItems, isEmpty } = useCart()
 
-  // useEffect(() => {
-  //   console.log('start')
-  //   // localStorage.setItem('cart', 'afasfg')
-  //   const cartItems = localStorage.getItem('cart')
-  //   console.log(cartItems, 'startItems')
-  //   if (cartItems) {
-  //     // setItems(cartItems)
-  //     console.log('setItems')
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (!isEmpty) return
+
+    const cartItems = JSON.parse(localStorage.getItem('react-use-cart'))
+    if (!cartItems.isEmpty) {
+      console.log('setting up the cart')
+      setItems(cartItems.items)
+    }
+  }, [])
 
   return (
     <>

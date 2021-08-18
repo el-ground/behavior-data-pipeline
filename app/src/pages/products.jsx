@@ -260,7 +260,6 @@ const ProductPage = ({ location }) => {
                     price: product.price,
                     image: product.imgUrl,
                     name: product.name,
-                    description: product.description,
                     color: selectedColor,
                     size: selectedSize.name,
                     brand: product.brand,
