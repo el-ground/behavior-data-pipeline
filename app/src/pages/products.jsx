@@ -1,33 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useCart } from 'react-use-cart'
 import { RadioGroup } from '@headlessui/react'
 import classNames from 'classnames'
-// import { navigate } from '@reach/router'
 // import ReviewsList from '../components/ReviewsList'
 import { products } from '../res/data'
 import { getFormattedPrice } from '../utils/getFormattedPrice'
 import { Drawer, DrawerHeader, DrawerBody, DrawerFooter } from '../components/Drawer'
+import { navigate } from 'gatsby'
 
 const ProductPage = ({ location }) => {
   const params = location.search ? new URLSearchParams(location.search) : null
   const variantId = params && params.get('id')
-
   if (!products || !variantId) return null
-
-  const { addItem } = useCart()
 
   const product = products.find((product) => {
     return product.id === variantId
   })
-
   if (!product) return null
+
+  const initialColor = (params && params.get('color')) ?? product.colors[0]
+
+  const initialSize = () => {
+    const variantSize = params && params.get('size')
+    const sizeIndex = variantSize
+      ? product.sizes.findIndex((size) => size.name === variantSize)
+      : product.sizes.findIndex((size) => size.inStock)
+    return product.sizes[sizeIndex]
+  }
+
+  const { addItem } = useCart()
 
   const formattedPrice = getFormattedPrice(product.price)
   const [variantQuantity, setVariantQuantity] = useState(1)
-  const [selectedColor, setSelectedColor] = useState(product.colors[0])
-
-  const sizeIndex = product.sizes.findIndex((size) => size.inStock)
-  const [selectedSize, setSelectedSize] = useState(product.sizes[sizeIndex])
+  const [selectedColor, setSelectedColor] = useState(initialColor)
+  const [selectedSize, setSelectedSize] = useState(initialSize)
 
   const [isReviewDrawerOpen, setIsReviewDrawerOpen] = useState(false)
   const toggleReviewDrawer = () => setIsReviewDrawerOpen(!isReviewDrawerOpen)
@@ -35,12 +41,9 @@ const ProductPage = ({ location }) => {
   const [isSizeDrawerOpen, setIsSizeDrawerOpen] = useState(false)
   const toggleSizeDrawer = () => setIsSizeDrawerOpen(!isSizeDrawerOpen)
 
-  // const activeVariant = variants.find((variant) => variant.id === activeVariantId)
-  // useEffect(() => {
-  //   navigate(`?variantId=${activeVariantId}`, { replace: true })
-  // }, [activeVariantId])
-
-  // id, name, brand, category, type, sizes, price, quantity, colors, imgUrl, link
+  useEffect(() => {
+    navigate(`/products?id=${variantId}&color=${selectedColor}&size=${selectedSize.name}`)
+  }, [selectedColor, selectedSize])
 
   return (
     <>
@@ -187,7 +190,6 @@ const ProductPage = ({ location }) => {
                 Size guide
               </a>
             </div>
-
             <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
               <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
               <div className="grid grid-cols-4 gap-4">
@@ -247,11 +249,11 @@ const ProductPage = ({ location }) => {
               onClick={() =>
                 addItem(
                   {
-                    id: product.id,
+                    // need to have unique id per variant
+                    id: `${product.id}&color=${selectedColor}&size=${selectedSize.name}`,
                     price: product.price,
                     image: product.imgUrl,
                     name: product.name,
-                    description: product.description,
                     color: selectedColor,
                     size: selectedSize.name,
                     brand: product.brand,

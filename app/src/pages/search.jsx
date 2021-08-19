@@ -13,7 +13,7 @@ const SearchPage = () => {
     //   indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
     // >
     <div className="mb-6">
-      <h1 className="font-bold text-3xl md:text-6xl mb-3 text-primary">Search</h1>
+      <h1 className="font-bold text-3xl md:text-5xl mb-3 text-primary">Search</h1>
 
       <hr className="border-b border-gainsboro w-10" />
     </div>
