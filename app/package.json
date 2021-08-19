@@ -15,7 +15,7 @@
     "prettier": "prettier 'src/**/*.{js,jsx,css}' --list-different --write"
   },
   "engines": {
-    "node": "12"
+    "node": ">=12"
   },
   "browserslist": [
     "> 0.25%",

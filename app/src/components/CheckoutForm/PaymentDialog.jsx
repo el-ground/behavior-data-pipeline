@@ -8,7 +8,7 @@ const PaymentDialog = ({ isOpen, onClose, onComplete }) => {
   const [cardHolder, setCardHolder] = useState('Hong Gildong')
   const [cardNumber, setCardNumber] = useState('0000 0000 0000 0000')
   const [expiryMonth, setExpiryMonth] = useState('MM')
-  const [expiryYear, setExpiryYear] = useState('YY')
+  const [expiryYear, setExpiryYear] = useState('YYYY')
   const [securityCode, setSecurityCode] = useState('000')
 
   const formatCardNumber = () => {
@@ -21,7 +21,7 @@ const PaymentDialog = ({ isOpen, onClose, onComplete }) => {
     if (cardHolder.length < 4) return false
     if (cardNumber === '' || cardNumber.length !== 20) return false
     if (expiryMonth === '' || expiryMonth === 'MM') return false
-    if (expiryYear === '' || expiryYear === 'YY') return false
+    if (expiryYear === '' || expiryYear === 'YYYY') return false
     if (securityCode.length !== 3 || securityCode === '000') return false
     return true
   }, [cardNumber, cardHolder, expiryYear, expiryMonth, securityCode])
@@ -186,7 +186,7 @@ const PaymentDialog = ({ isOpen, onClose, onComplete }) => {
                         }}
                       >
                         <option value="" selected disabled>
-                          YY
+                          YYYY
                         </option>
                         <option value="2021">2021</option>
                         <option value="2022">2022</option>
