@@ -14,7 +14,7 @@ const CartItem = ({ id, name, quantity, color, size, itemTotal, price, image }) 
   const formattedLineTotal = getFormattedPrice(itemTotal)
 
   return (
-    <div key={id} className="md:bg-gainsboro md:rounded-lg flex md:items-center md:py-6 md:px-6 md:mb-3">
+    <div key={id} className="md:bg-gainsboro md:rounded-lg flex md:items-center py-0.5 md:p-3.5 md:mb-3">
       <div className="w-3/5 flex flex-grow">
         <div className="flex-shrink-0 w-24 h-24 border border-gainsboro rounded-md overflow-hidden mr-4">
           <img src={image} alt={name} className="w-full h-full object-center object-cover" />

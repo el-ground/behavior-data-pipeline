@@ -9,7 +9,8 @@ const Cart = () => {
   const { isEmpty, cartTotal } = useCart()
   const formattedSubTotal = getFormattedPrice(cartTotal)
 
-  if (isEmpty) return <p>Your cart is empty</p>
+  if (isEmpty)
+    return <p className="py-2 md:py-10 leading-loose text-darkgray text-xl font-medium">Your cart is empty</p>
 
   return (
     <>

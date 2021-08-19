@@ -30,12 +30,6 @@ const ProductPage = ({ location }) => {
 
   const { addItem } = useCart()
 
-  //   localStorage.setItem('cart', items.toString())
-  // }, [items])
-  // useEffect(() => {
-  //   console.log(JSON.parse(localStorage.getItem('cart')), 'cart')
-  // }, [])
-
   const formattedPrice = getFormattedPrice(product.price)
   const [variantQuantity, setVariantQuantity] = useState(1)
   const [selectedColor, setSelectedColor] = useState(initialColor)
