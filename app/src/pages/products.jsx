@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useCart } from 'react-use-cart'
 import { RadioGroup } from '@headlessui/react'
 import classNames from 'classnames'
-// import ReviewsList from '../components/ReviewsList'
 import { products } from '../res/data'
 import { getFormattedPrice } from '../utils/getFormattedPrice'
 import { Drawer, DrawerHeader, DrawerBody, DrawerFooter } from '../components/Drawer'
-import { navigate } from 'gatsby'
 
 const ProductPage = ({ location }) => {
   const params = location.search ? new URLSearchParams(location.search) : null
@@ -42,7 +40,11 @@ const ProductPage = ({ location }) => {
   const toggleSizeDrawer = () => setIsSizeDrawerOpen(!isSizeDrawerOpen)
 
   useEffect(() => {
-    navigate(`/products?id=${variantId}&color=${selectedColor}&size=${selectedSize.name}`)
+    if (window.history.pushState) {
+      const newURL = new URL(window.location.href)
+      newURL.search = `?id=${variantId}&color=${selectedColor}&size=${selectedSize.name}`
+      window.history.replaceState(null, '', newURL.href)
+    }
   }, [selectedColor, selectedSize])
 
   return (
@@ -294,8 +296,6 @@ const ProductPage = ({ location }) => {
           </Drawer>
         </div>
       </div>
-
-      {/* {product.reviews ? <ReviewsList productId={product.id} reviews={product.reviews} /> : null} */}
     </>
   )
 }
