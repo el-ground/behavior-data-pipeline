@@ -5,7 +5,7 @@ import { useCart } from 'react-use-cart'
 import { categories } from '../res/data'
 
 function Header({ location }) {
-  const { isEmpty } = useCart()
+  const { totalUniqueItems } = useCart()
 
   return (
     <header className="px-6 container mx-auto bg-white w-full max-w-screen-xl flex-grow flex items-center justify-between">
@@ -57,8 +57,10 @@ function Header({ location }) {
 
             <div className="ml-8">
               <Link to="/cart" className="flex items-center relative">
-                {!isEmpty && (
-                  <span className="absolute top-0 right-0 -mt-1 -mr-2 w-2 h-2 bg-primary rounded-full"></span>
+                {totalUniqueItems !== 0 && (
+                  <span className="absolute bottom-3.5 left-4 h-5 py-0.5 px-1.5 text-xs text-center text-white bg-indigo-600 rounded-lg">
+                    {totalUniqueItems}
+                  </span>
                 )}
 
                 <span className="text-slategray">

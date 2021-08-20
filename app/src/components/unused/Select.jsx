@@ -1,8 +1,8 @@
-import React from 'react'
-import { ErrorMessage } from 'react-hook-form'
+import React, { forwardRef } from 'react'
+import { ErrorMessage } from '@hookform/error-message'
 import classNames from 'classnames'
 
-function Select({ disabled, errors = {}, register, name, options, ...rest }) {
+const Select = forwardRef(({ disabled, errors = {}, register, name, defaultValue, options, ...rest }, ref) => {
   const selectClass = classNames(
     'block appearance-none w-full bg-gainsboro border-2 px-4 py-3 pr-8 focus:outline-none focus:bg-white text-slategray rounded-lg',
     {
@@ -11,11 +11,11 @@ function Select({ disabled, errors = {}, register, name, options, ...rest }) {
   )
 
   return (
-    <React.Fragment>
+    <>
       <div className="relative">
         <select name={name} ref={register} className={selectClass} disabled={disabled} {...rest}>
-          {options.map(({ value, name }) => (
-            <option key={value} value={value}>
+          {options?.map(({ name, code }) => (
+            <option key={code} value={code} selected={code === 'KR' ? true : false}>
               {name}
             </option>
           ))}
@@ -28,8 +28,8 @@ function Select({ disabled, errors = {}, register, name, options, ...rest }) {
         </div>
       </div>
       <ErrorMessage as={<p className="mt-2 text-red text-sm" />} name={name} errors={errors} />
-    </React.Fragment>
+    </>
   )
-}
+})
 
 export default Select

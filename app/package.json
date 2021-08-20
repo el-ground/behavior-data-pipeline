@@ -15,7 +15,7 @@
     "prettier": "prettier 'src/**/*.{js,jsx,css}' --list-different --write"
   },
   "engines": {
-    "node": "12"
+    "node": ">=12"
   },
   "browserslist": [
     "> 0.25%",
@@ -24,7 +24,6 @@
   "dependencies": {
     "@headlessui/react": "^1.4.0",
     "@reach/portal": "^0.16.0",
-    "@reach/router": "github:reach/router",
     "babel-plugin-styled-components": "^1.13.2",
     "classnames": "^2.3.1",
     "gatsby": "^3.10.1",
@@ -40,11 +39,9 @@
     "gatsby-plugin-styled-components": "^4.10.0",
     "gatsby-source-filesystem": "^3.11.0",
     "gatsby-transformer-sharp": "^3.11.0",
-    "query-string": "^7.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
-    "react-hook-form": "^7.12.2",
     "react-toastify": "^7.0.4",
     "react-use-cart": "^1.11.2",
     "styled-components": "^5.3.0"

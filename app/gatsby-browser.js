@@ -16,20 +16,13 @@ const toastOptions = {
   autoClose: 2000,
 }
 
-const randomCartId = () => Math.random().toString(36).substring(7)
-
 export const wrapPageElement = ({ element, props }) => {
   return <Layout {...props}>{element}</Layout>
 }
 
 export const wrapRootElement = ({ element }) => {
   return (
-    <CartProvider
-      id={randomCartId()}
-      onItemAdd={handleItemAdded}
-      onItemUpdate={handleItemUpdated}
-      onItemRemove={handleItemRemoved}
-    >
+    <CartProvider onItemAdd={handleItemAdded} onItemUpdate={handleItemUpdated} onItemRemove={handleItemRemoved}>
       {element}
       <ToastContainer {...toastOptions} />
     </CartProvider>
